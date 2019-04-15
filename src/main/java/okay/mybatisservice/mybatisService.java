@@ -1,5 +1,6 @@
 package okay.mybatisservice;
 
+import java.util.List;
 import okay.mybatisservice.mapper.User;
 import okay.mybatisservice.mapper.UserMapper;
 import okay.mysqlservice.MysqlService;
@@ -18,5 +19,11 @@ public class mybatisService {
         UserMapper mapper = sqlSession.getMapper(UserMapper.class);
         User u = mapper.selectUser(1);
         System.out.println(u);
+
+        List<User> us = mapper.selectAllUser();
+        for (User tmp : us) {
+            System.out.println(tmp);
+        }
+        
     }
 }
