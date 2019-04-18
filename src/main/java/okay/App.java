@@ -1,6 +1,6 @@
 package okay;
 
-import okay.zkservice.SyncPrimitive;
+import okay.zkservice.zkService;
 
 /**
  * Hello world!
@@ -15,6 +15,9 @@ public class App
 //        mybatisService s = new mybatisService();
 //        s.handle();
 
-        SyncPrimitive.handle(args);
+        // SyncPrimitive.handle(args);
+        zkService z = new zkService();
+        z.Handle();
+
     }
 }
