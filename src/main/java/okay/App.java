@@ -1,6 +1,6 @@
 package okay;
 
-import okay.mybatisservice.mybatisService;
+import okay.zkservice.SyncPrimitive;
 
 /**
  * Hello world!
@@ -12,7 +12,9 @@ public class App
     {
 
         // System.out.println( "Hello World!" );
-        mybatisService s = new mybatisService();
-        s.handle();
+//        mybatisService s = new mybatisService();
+//        s.handle();
+
+        SyncPrimitive.handle(args);
     }
 }
