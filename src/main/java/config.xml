@@ -8,7 +8,7 @@
 
     </typeAliases>
     <environments default="dev">
-        <environment id="dev">
+        <environment id="dev57">
             <transactionManager type="JDBC"/>
             <dataSource type="POOLED">
                 <property name="driver" value="com.mysql.jdbc.Driver"/>
