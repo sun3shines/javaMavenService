@@ -31,3 +31,5 @@ curl.txt
 out
 *.iml
 target
+*.jar
+
