@@ -14,7 +14,7 @@ public class ConsumerService {
         demoService = new BaseService<DemoService>().getService(DemoService.class);
         helloService = new BaseService<HelloService>().getService(HelloService.class);
     }
-    
+
     public static void main(String[] args) {
 
 
