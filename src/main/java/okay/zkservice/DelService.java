@@ -6,7 +6,7 @@ public class DelService {
 
     public static  void main(String[] args) throws  Exception{
 
-        ZooKeeper zk = new Connection().getConnection(false);
+        ZooKeeper zk = new Connection().getConnection(null);
         zk.delete(Connection.path,-1);
     }
 }

@@ -6,7 +6,7 @@ public class GetService {
 
     public void Handle() throws Exception {
 
-        ZooKeeper zk = new Connection().getConnection(true);
+        ZooKeeper zk = new Connection().getConnection(null);
 
 
         byte[] data = zk.getData(Connection.path, true, null);

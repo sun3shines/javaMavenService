@@ -2,18 +2,26 @@ package okay.zkservice;
 
 import okay.Util.Util;
 import org.apache.zookeeper.CreateMode;
+import org.apache.zookeeper.Watcher;
 import org.apache.zookeeper.ZooDefs;
 import org.apache.zookeeper.ZooKeeper;
 import org.apache.zookeeper.data.Stat;
 
 public class SetService {
 
+    public Watcher getWatch() {
+        return new WatchService();
+    }
     public void Handle() throws  Exception{
+
 
         String data = Util.getNowTime();
 
+        Watcher w = getWatch();
 
-        ZooKeeper zk = new Connection().getConnection(true);
+        ZooKeeper zk = new Connection().getConnection(w);
+        ((WatchService) w).setZk(zk);
+
         if (null != zk.exists(Connection.path, true)) {
             zk.delete(Connection.path, -1);
         }
