@@ -6,7 +6,7 @@ import org.apache.zookeeper.ZooKeeper;
 
 public class WatchService implements Watcher {
 
-    public static ZooKeeper zk;
+    public ZooKeeper zk;
 
     public void setZk(ZooKeeper zk) {
         this.zk = zk;
@@ -26,11 +26,15 @@ public class WatchService implements Watcher {
             System.out.println("[子节点更新(父增删子节点)]" + event.getPath() + ":" + event.getType());
         }
 
-//        System.out.println("OK " + event.getPath());
-//        try {
-//            zk.exists(Connection.path, true);
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
+        System.out.println("OK " + event.getPath());
+        zk.register(this);
+
+
+        try {
+            System.out.println("watch ...");
+            zk.getData(Connection.path, true, null);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

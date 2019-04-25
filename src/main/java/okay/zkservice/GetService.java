@@ -6,11 +6,12 @@ public class GetService {
 
     public void Handle() throws Exception {
 
-        ZooKeeper zk = new Connection().getConnection();
+        ZooKeeper zk = new Connection().getConnection(true);
 
         byte[] data = zk.getData(Connection.path, true, null);
         System.out.println(String.format("Get %s", data.toString()));
         while (true) {
+            Thread.sleep(100);
         }
     }
 
