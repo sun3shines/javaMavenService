@@ -12,8 +12,14 @@ public class SetService {
 
         String data = Util.getNowTime();
 
+
         ZooKeeper zk = new Connection().getConnection(true);
-        if(null == zk.exists(Connection.path, null)){
+        if (null != zk.exists(Connection.path, true)) {
+            zk.delete(Connection.path, -1);
+        }
+
+
+        if (null == zk.exists(Connection.path, true)) {
             String r = zk.create(Connection.path, data.getBytes(), ZooDefs.Ids.OPEN_ACL_UNSAFE, CreateMode.PERSISTENT);
             System.out.println(String.format("Create %s", r));
         }
@@ -27,7 +33,12 @@ public class SetService {
 
         }
 
-      
+        while (true) {
+            Thread.sleep(100);
+            break;
+        }
+
+
     }
     public static  void main(String[] args) throws  Exception{
         SetService s = new SetService();
