@@ -13,7 +13,6 @@ public class zkService {
         zk = new ZooKeeper("10.60.0.57:2181", 3000, null);
     }
 
-
     public void write() throws Exception {
 
         // 临时节点，其他的连接无法访问；

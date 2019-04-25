@@ -8,8 +8,10 @@ public class GetService {
 
         ZooKeeper zk = new Connection().getConnection(true);
 
+
         byte[] data = zk.getData(Connection.path, true, null);
-        System.out.println(String.format("Get %s", data.toString()));
+        System.out.println(data);
+        System.out.println(String.format("Get %s", new String(data)));
         while (true) {
             Thread.sleep(100);
         }

@@ -19,13 +19,15 @@ public class SetService {
         }
 
         for (int i = 0; i < 10; i++) {
+
             data = Util.getNowTime();
+            // 之前抛异常是因为zk为null导致；没有很好的设置好zk导致；
             Stat st = zk.setData(Connection.path, data.getBytes(), -1);
             System.out.println(String.format("Set %s %s", st.getVersion(), st.getCzxid()));
 
         }
 
-
+      
     }
     public static  void main(String[] args) throws  Exception{
         SetService s = new SetService();
