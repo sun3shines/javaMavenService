@@ -1,17 +1,21 @@
 package okay.zkservice;
 
+import org.apache.zookeeper.Watcher;
 import org.apache.zookeeper.ZooKeeper;
 
 public class GetService {
 
     public void Handle() throws Exception {
 
-        ZooKeeper zk = new Connection().getConnection(null);
+        // 首次连接后，必须重新连接才能收到后面的消息处理；
+        
+        Watcher w = new SimpleWatch();
+        ZooKeeper zk = new Connection().getConnection(w);
+        System.out.println("1");
+        ((SimpleWatch) w).setZk(zk);
+        System.out.println("2");
 
-
-        byte[] data = zk.getData(Connection.path, true, null);
-        System.out.println(data);
-        System.out.println(String.format("Get %s", new String(data)));
+        zk.exists(Connection.path, true);
         while (true) {
             Thread.sleep(100);
         }
