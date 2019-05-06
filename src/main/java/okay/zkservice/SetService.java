@@ -28,6 +28,8 @@ public class SetService {
 
 
         if (null == zk.exists(Connection.path, true)) {
+            // 返回创建的实际路径；
+
             String r = zk.create(Connection.path, data.getBytes(), ZooDefs.Ids.OPEN_ACL_UNSAFE, CreateMode.PERSISTENT);
             System.out.println(String.format("Create %s", r));
         }

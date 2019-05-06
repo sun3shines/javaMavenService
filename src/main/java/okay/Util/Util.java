@@ -11,4 +11,13 @@ public class Util {
         return timestamp.toString();
     }
 
+    public static void Sleep(float seconds) {
+
+        int a = Float.valueOf(seconds * 1000).intValue();
+        try {
+            Thread.sleep(a);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }
